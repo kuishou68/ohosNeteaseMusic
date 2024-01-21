@@ -1,0 +1,48 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "该模板实现了分类浏览的功能"
+    },
+    {
+      "name": "ability_desc",
+      "value": "该Ability加载显示主Page的内容"
+    },
+    {
+      "name": "ability_label",
+      "value": "Category Ability"
+    },
+    {
+      "name": "list_item_text",
+      "value": "榜%d"
+    },
+    {
+      "name": "tab_text",
+      "value": "页签"
+    },
+    {
+      "name": "detail_list_item_text",
+      "value": "子标题"
+    },
+    {
+      "name": "grid_item_text",
+      "value": "子类"
+    },
+    {
+      "name": "sub_title",
+      "value": "子标题"
+    },
+    {
+      "name": "title",
+      "value": "网易云音乐"
+    },
+    {
+      "name": "http_error_message",
+      "value": "网络请求失败，请稍后尝试！"
+    },
+    {
+      "name": "page_none_msg",
+      "value": "网络加载失败"
+    }
+  ]
+}
