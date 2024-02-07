@@ -10,7 +10,7 @@ import Logger from '../common/util/Logger';
 @Component
 export struct DetailListComponent {
   scroller: Scroller;
-  @Prop detailListBreakpoint: string ;
+  @Prop detailListBreakpoint: string;
   @Link sideListIndex: number;
   @Prop sideItemId: string;
 

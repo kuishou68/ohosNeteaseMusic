@@ -19,7 +19,7 @@ import Logger from '../common/util/Logger';
 @Component
 struct CategoryPage {
   @State sideListData: Array<object> = []; // 侧边栏列表
-  @State categoryTabIndex: number = 1;
+  @State categoryTabIndex: number = 0;
   @State currentBreakpoint: string = CommonConstants.BREAK_POINT_SM;
   @State scrollerIndex: number = 1;
   @State scrollerItemId: string = "";
@@ -53,7 +53,6 @@ struct CategoryPage {
       });
   }
 
-
   build() {
     Column() {
       Tabs({
@@ -63,7 +62,7 @@ struct CategoryPage {
       }) {
         ForEach(CategoryViewModel.getTabItems(), (item: TabItem, index: number) => {
           TabContent() {
-            GridRow({
+            /*GridRow({
               columns: {
                 sm: CommonConstants.COLUMN_SM,
                 md: CommonConstants.COLUMN_MD,
@@ -128,7 +127,7 @@ struct CategoryPage {
             })
             .onBreakpointChange((currentBreakpoint: string) => {
               this.currentBreakpoint = currentBreakpoint;
-            })
+            })*/
           }
           .tabBar(this.TabBottom(item, index))
         }, (item, index) => index + JSON.stringify(item))

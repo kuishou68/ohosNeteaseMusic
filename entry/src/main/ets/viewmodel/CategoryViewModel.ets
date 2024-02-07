@@ -3,6 +3,8 @@ import { SideListItem } from '../common/bean/SideListItem';
 import { TabItem } from '../common/bean/TabItem';
 import { DetailListItem } from '../common/bean/DetailListItem';
 import { DetailItemData } from '../common/bean/DetailItemData';
+// @ts-ignore
+import { Ranking } from '../pages/Ranking';
 import musicTopListViewModel, { musicTopListData, } from './MusicTopListViewModel';
 import { CommonConstants as Const, ContentType } from '../../ets/common/constants/CommonConstants';
 import promptAction from '@ohos.promptAction';
@@ -36,15 +38,54 @@ export class CategoryViewModel {
    * @return {Array<TabItem>} tabItems
    */
   getTabItems(): Array<TabItem> {
-    let tabItems: Array<TabItem> = [];
-    for (let index = 0; index < CommonConstants.TAB_BAR_SIZE; index++) {
+    // let ranking = new Ranking();
+    let tabItems: Array<TabItem> = [
+      {
+        index: 0,
+        title: "推荐",
+        imageOriginal: $r('app.media.ic_tab_normal'),
+        imageActivated: $r('app.media.ic_tab_activated'),
+        // @ts-ignore
+        tabContent: new Ranking()
+      },
+      {
+        index: 1,
+        title: "排行榜",
+        imageOriginal: $r('app.media.ic_tab_normal'),
+        imageActivated: $r('app.media.ic_tab_activated'),
+        tabContent: ""
+      },
+      {
+        index: 2,
+        title: "播放",
+        imageOriginal: $r('app.media.ic_tab_normal'),
+        imageActivated: $r('app.media.ic_tab_activated'),
+        tabContent: ""
+      },
+      {
+        index: 3,
+        title: "电台",
+        imageOriginal: $r('app.media.ic_tab_normal'),
+        imageActivated: $r('app.media.ic_tab_activated'),
+        tabContent: ""
+      },
+      {
+        index: 4,
+        title: "我的",
+        imageOriginal: $r('app.media.ic_tab_normal'),
+        imageActivated: $r('app.media.ic_tab_activated'),
+        tabContent: ""
+      },
+    ];
+    /*for (let index = 0; index < CommonConstants.TAB_BAR_SIZE; index++) {
       let tabItem = new TabItem();
       tabItem.index = index;
-      tabItem.title = $r('app.string.tab_text');
+      tabItem.title = $r('app.string.tab_text'); // 推荐、排行榜、播放、我的
       tabItem.imageOriginal = $r('app.media.ic_tab_normal');
       tabItem.imageActivated = $r('app.media.ic_tab_activated');
+      // tabItem.TabContent =
       tabItems.push(tabItem);
-    }
+    }*/
     return tabItems;
   }
 
