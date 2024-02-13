@@ -12,10 +12,10 @@ export class DetailListItem {
   /**
    * Detail list item title.
    */
-  title: Resource;
+  name: Resource;
 
   /**
    * Detail list item data.
    */
-  detailItemData: Array<DetailItemData>;
+  tracks: Array<DetailItemData>;
 }

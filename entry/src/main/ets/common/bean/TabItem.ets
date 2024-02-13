@@ -10,7 +10,7 @@ export class TabItem {
   /**
    * Tab item title.
    */
-  title: Resource;
+  title: string | Resource;
 
   /**
    * Image activated.
@@ -21,4 +21,9 @@ export class TabItem {
    * Image original.
    */
   imageOriginal: Resource;
+
+  /**
+   * 页面组件
+   */
+  tabContent: string | Resource;
 }

@@ -5,5 +5,14 @@ export class DetailItemData {
   /**
    * Grid item content.
    */
-  content: Resource;
+  name: Resource;
+
+  al: {
+    "id": string | number,
+    "name": string,
+    "picUrl": string,
+    "tns": [],
+    "pic_str": string,
+    "pic": string | number
+  }
 }

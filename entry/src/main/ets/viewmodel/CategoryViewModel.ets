@@ -45,6 +45,44 @@ export class CategoryViewModel {
       tabItem.imageActivated = $r('app.media.ic_tab_activated');
       tabItems.push(tabItem);
     }
+    // let tabItems: Array<TabItem> = [
+    //   {
+    //     index: 0,
+    //     title: "推荐",
+    //     imageOriginal: $r('app.media.ic_tab_normal'),
+    //     imageActivated: $r('app.media.ic_tab_activated'),
+    //     // @ts-ignore
+    //     tabContent: new Ranking()
+    //   },
+    //   {
+    //     index: 1,
+    //     title: "排行榜",
+    //     imageOriginal: $r('app.media.ic_tab_normal'),
+    //     imageActivated: $r('app.media.ic_tab_activated'),
+    //     tabContent: ""
+    //   },
+    //   {
+    //     index: 2,
+    //     title: "播放",
+    //     imageOriginal: $r('app.media.ic_tab_normal'),
+    //     imageActivated: $r('app.media.ic_tab_activated'),
+    //     tabContent: ""
+    //   },
+    //   {
+    //     index: 3,
+    //     title: "电台",
+    //     imageOriginal: $r('app.media.ic_tab_normal'),
+    //     imageActivated: $r('app.media.ic_tab_activated'),
+    //     tabContent: ""
+    //   },
+    //   {
+    //     index: 4,
+    //     title: "我的",
+    //     imageOriginal: $r('app.media.ic_tab_normal'),
+    //     imageActivated: $r('app.media.ic_tab_activated'),
+    //     tabContent: ""
+    //   },
+    // ];
     return tabItems;
   }
 
@@ -58,10 +96,11 @@ export class CategoryViewModel {
     for (let i = 0; i < CommonConstants.LIST_SIZE; i++) {
       let detailListItem = new DetailListItem();
       detailListItem.index = i;
-      detailListItem.title = $r('app.string.detail_list_item_text');
-      detailListItem.detailItemData = this.getDetailItems();
+      // detailListItem.title = $r('app.string.detail_list_item_text');
+      // detailListItem.detailItemData = this.getDetailItems();
       detailListItems.push(detailListItem);
     }
+    Logger.error("detailListItems", JSON.stringify(detailListItems));
     return detailListItems;
   }
 
@@ -74,7 +113,7 @@ export class CategoryViewModel {
     let detailData: Array<DetailItemData> = [];
     for (let i = 0; i < CommonConstants.DETAIL_ITEM_SIZE; i++) {
       let gridItemData = new DetailItemData();
-      gridItemData.content = $r('app.string.grid_item_text');
+      // gridItemData.content = $r('app.string.grid_item_text');
       detailData.push(gridItemData);
     }
     return detailData;

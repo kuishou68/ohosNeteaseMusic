@@ -5,7 +5,7 @@ export class CommonConstants {
   /**
    * 服务器地址
    */
-  static readonly SERVER: string = 'http://192.168.137.168:3000';
+  static readonly SERVER: string = 'https://netease-music.zeabur.app/'; // http://192.168.3.105:3000';
 
   /**
    * 所有榜单
@@ -13,9 +13,9 @@ export class CommonConstants {
   static readonly TOP_LIST: string = 'toplist/detail';
 
   /**
-   *
+   * 榜单详情
    */
-  static readonly PLAY_LIST_DETAIL: string = 'playlist/detail?'
+  static readonly PLAY_LIST_DETAIL: string = 'playlist/detail'
 
   /**
    * The animation duration.
@@ -232,7 +232,7 @@ export class CommonConstants {
   /**
    * The percentage of the half height.
    */
-  static readonly HALF_HEIGHT_PERCENT: string = '50%';
+  static readonly HALF_HEIGHT_PERCENT: string = '45%';
 }
 
 
