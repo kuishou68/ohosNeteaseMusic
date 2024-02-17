@@ -27,12 +27,31 @@ class MusicTopListViewModel{
   }
   // 根据分类查询详情
   getMusicTopItem(path:string, id: string): Promise<musicTopItemData[]>{
-    Logger.error("id----->", id);
+    // Logger.error("id----->", id);
+    return new Promise(async (resolve: Function, reject: Function) => {
+      let url = `${Const.SERVER}/${path}?id=${id}`;
+      // console.log("url------>", url);
+      httpRequestGet(url).then((data) => {
+      // Logger.error('data------->', JSON.stringify(data));
+        if (data.code === Const.HTTP_CODE_200) {
+          resolve(data);
+        } else {
+          Logger.error('getMusicTopItem failed', JSON.stringify(data));
+          reject($r('app.string.page_none_msg'));
+        }
+      }).catch((err: Error) => {
+        Logger.error('getMusicTopItem failed', JSON.stringify(err));
+        reject($r('app.string.http_error_message'));
+      });
+    });
+  }
+  // 获取音乐URL
+  getMusicUrl(path:string, id: string): Promise<musicUrlData>{
     return new Promise(async (resolve: Function, reject: Function) => {
       let url = `${Const.SERVER}/${path}?id=${id}`;
       console.log("url------>", url);
       httpRequestGet(url).then((data) => {
-      Logger.error('data------->', JSON.stringify(data));
+        Logger.error('data------->', JSON.stringify(data));
         if (data.code === Const.HTTP_CODE_200) {
           resolve(data);
         } else {
@@ -68,6 +87,14 @@ export class musicTopItemData{
 
   constructor() {
     this.playlist = {};
+  }
+}
+
+export class musicUrlData{
+  musicUrl: Array<object>;
+
+  constructor() {
+    this.musicUrl = [];
   }
 }
 

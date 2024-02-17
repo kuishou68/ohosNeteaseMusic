@@ -5,7 +5,7 @@ export class CommonConstants {
   /**
    * 服务器地址
    */
-  static readonly SERVER: string = 'https://netease-music.zeabur.app/'; // http://192.168.3.105:3000';
+  static readonly SERVER: string = 'http://192.168.3.126:3000'; // https://netease-music.zeabur.app;
 
   /**
    * 所有榜单
@@ -16,6 +16,11 @@ export class CommonConstants {
    * 榜单详情
    */
   static readonly PLAY_LIST_DETAIL: string = 'playlist/detail'
+
+  /**
+   * 获取音乐 url
+   */
+  static readonly SONG_URL: string = 'song/url'
 
   /**
    * The animation duration.

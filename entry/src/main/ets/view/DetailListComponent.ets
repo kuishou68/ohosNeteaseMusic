@@ -6,6 +6,7 @@ import Logger from '../common/util/Logger';
 import musicTopListViewModel, { musicTopListData, ResponseResult, } from  '../viewmodel/MusicTopListViewModel';
 import { CommonConstants as Const, ContentType } from '../../ets/common/constants/CommonConstants';
 import promptAction from '@ohos.promptAction';
+import { AVPlayer } from './AVPlayer';
 
 /**
  * Category detail list component.
@@ -42,6 +43,30 @@ struct CategoryListItem {
   private detailListItem: DetailListItem;
   @Prop currentBreakpoint: string;
 
+  // 获取音乐URL
+  getMusicUrl(item){
+    musicTopListViewModel.getMusicUrl(Const.SONG_URL, item.id)
+      // @ts-ignore
+      .then((data: ResponseResult) => {
+        // Logger.error("data=======>", JSON.stringify(data));
+        if (data.code === Const.HTTP_CODE_200) {
+          Logger.info("音乐详情-->", JSON.stringify(data.data[0]))
+          let musicDetail = data.data[0];
+          let { avPlayerUrl } = new AVPlayer();
+          Logger.error("musicDetail.url===>", JSON.stringify(musicDetail.url));
+          avPlayerUrl(musicDetail.url);
+        } else {
+          Logger.error('getMusicTopItem failed', JSON.stringify(data));
+        }
+      })
+      .catch((err: string | Resource) => {
+        promptAction.showToast({
+          message: err,
+          duration: Const.ANIMATION_DURATION
+        });
+      });
+  }
+
   build() {
     Column() {
       Text(this.detailListItem.name)
@@ -50,8 +75,6 @@ struct CategoryListItem {
         .fontColor($r('app.color.list_item_text'))
         .fontWeight(CommonConstants.DETAIL_LIST_FONT_WEIGHT)
         .align(Alignment.Start)
-
-
 
       Flex({ wrap: FlexWrap.Wrap }) {
         ForEach(this.detailListItem.tracks, (item: DetailItemData) => {
@@ -64,8 +87,12 @@ struct CategoryListItem {
             .fontWeight(CommonConstants.TAB_ITEM_FONT_WEIGHT)
             .align(Alignment.Center)
             .borderRadius($r('app.float.grid_item_radius'))
-            // .backgroundColor($r('app.color.grid_text_background'))
-            .backgroundImage(item.al.picUrl)
+            .fontColor($r('app.color.start_window_background'))
+            .backgroundImage(item.al.picUrl ? item.al.picUrl : $r('app.color.grid_text_background'))
+            .onClick(() => {
+              Logger.error("当前歌曲===>", JSON.stringify(item));
+              this.getMusicUrl(item);
+            })
           }, (item, index) => index + JSON.stringify(item))
         }
     }
