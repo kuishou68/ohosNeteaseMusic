@@ -5,7 +5,7 @@ export class CommonConstants {
   /**
    * 服务器地址
    */
-  static readonly SERVER: string = 'http://192.168.3.126:3000'; // https://netease-music.zeabur.app;
+  static readonly SERVER: string = 'http://192.168.3.129:3000'; // https://netease-music.zeabur.app;
 
   /**
    * 所有榜单
