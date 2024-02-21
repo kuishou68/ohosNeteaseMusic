@@ -4,10 +4,15 @@ import { TopComponent } from '../view/TopComponent';
 import { CommonConstants } from '../common/constants/CommonConstants';
 import type { TabItem } from '../common/bean/TabItem';
 import promptAction from '@ohos.promptAction';
-import CategoryViewModel from '../viewmodel/CategoryViewModel';
-import musicTopListViewModel, { musicTopListData, ResponseResult, } from  '../viewmodel/MusicTopListViewModel';
+import CategoryViewModel from '../model/CategoryViewModel';
+import musicTopListViewModel, { musicTopListData, ResponseResult, } from '../model/MusicTopListViewModel';
 import { CommonConstants as Const, ContentType } from '../../ets/common/constants/CommonConstants';
 import Logger from '../common/util/Logger';
+import Header from '../common/playlist/Header'
+import Player from '../common/playlist/Player'
+import Content from '../common/playlist/Content'
+import BreakpointSystem from '../model/MediaData'
+
 
 /**
  * This module template implements Category functions.
@@ -25,6 +30,9 @@ struct CategoryPage {
   @State scrollerItemId: string = "";
   @State musicDetailListItems: object = {};
   scroller: Scroller;
+
+  private breakpointSystem: BreakpointSystem = new BreakpointSystem()
+  // @StorageProp('currentBreakpoint') currentBreakpoint: string = 'sm'
 
   // 建自定义组件的新实例后，在执行其build()函数之前执行
   aboutToAppear(){
@@ -139,7 +147,16 @@ struct CategoryPage {
         }.tabBar(this.TabBuilder(1, '排行榜'))
 
         TabContent() {
-          Column().width('100%').height('100%').backgroundColor('#00CB87')
+          // Column().width('100%').height('100%').backgroundColor('#00CB87')
+          Stack({ alignContent: Alignment.Bottom }) {
+            Stack({ alignContent: Alignment.Top }) {
+              Header()
+              Content()
+            }
+            Player()
+          }
+          .width('100%')
+          .backgroundColor(this.currentBreakpoint === 'sm' ? '#e4ecf7' : '#f6f9fc')
         }.tabBar(this.TabBuilder(2, '播放'))
 
         TabContent() {

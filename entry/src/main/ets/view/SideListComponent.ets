@@ -1,7 +1,7 @@
 import { CommonConstants } from '../common/constants/CommonConstants';
 import type { SideListItem } from '../common/bean/SideListItem';
 import Logger from '../common/util/Logger';
-import musicTopListViewModel, { musicTopListData, ResponseResult, } from  '../viewmodel/MusicTopListViewModel';
+import musicTopListViewModel, { musicTopListData, ResponseResult, } from '../model/MusicTopListViewModel';
 import { CommonConstants as Const, ContentType } from '../../ets/common/constants/CommonConstants';
 import promptAction from '@ohos.promptAction';
 

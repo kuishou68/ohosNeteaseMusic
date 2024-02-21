@@ -1,7 +1,7 @@
 
 import http from '@ohos.net.http';
 import axios from '@ohos/axios';
-import { ResponseResult } from '../../viewmodel/MusicTopListViewModel';
+import { ResponseResult } from '../../model/MusicTopListViewModel';
 import { CommonConstants as Const, ContentType } from '../constants/CommonConstants';
 import Logger from './Logger';
 

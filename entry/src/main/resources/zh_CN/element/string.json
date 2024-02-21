@@ -1,10 +1,6 @@
 {
   "string": [
     {
-      "name": "module_desc",
-      "value": "该模板实现了分类浏览的功能"
-    },
-    {
       "name": "ability_desc",
       "value": "该Ability加载显示主Page的内容"
     },
@@ -43,6 +39,51 @@
     {
       "name": "page_none_msg",
       "value": "网络加载失败"
+    },
+
+    {
+      "name": "module_desc",
+      "value": "模块描述"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "音乐专辑"
+    },
+    {
+      "name": "play_list",
+      "value": "歌单"
+    },
+    {
+      "name": "list_name",
+      "value": "独立民谣"
+    },
+    {
+      "name": "playlist_Introduction",
+      "value": "歌单选取了一些比较受关注的民谣歌曲。"
+    },
+    {
+      "name": "download",
+      "value": "下载"
+    },
+    {
+      "name": "comment",
+      "value": "评论"
+    },
+    {
+      "name": "share",
+      "value": "分享"
+    },
+    {
+      "name": "play_all",
+      "value": "播放全部(104)"
+    },
+    {
+      "name": "collection_num",
+      "value": "12.5万"
     }
   ]
 }
