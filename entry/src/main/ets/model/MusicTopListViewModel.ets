@@ -26,10 +26,10 @@ class MusicTopListViewModel{
     });
   }
   // 根据分类查询详情
-  getMusicTopItem(path:string, id: string): Promise<musicTopItemData[]>{
+  getMusicTopItem(path:string, id:string, limit:number, offset:number): Promise<musicTopItemData[]>{
     // Logger.error("id----->", id);
     return new Promise(async (resolve: Function, reject: Function) => {
-      let url = `${Const.SERVER}/${path}?id=${id}`;
+      let url = `${Const.SERVER}/${path}?id=${id}&limit=${limit}&offset=${offset}`;
       // console.log("url------>", url);
       httpRequestGet(url).then((data) => {
       // Logger.error('data------->', JSON.stringify(data));

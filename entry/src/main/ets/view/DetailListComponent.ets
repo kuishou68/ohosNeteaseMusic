@@ -152,15 +152,15 @@ struct CategoryListItem {
 
   build() {
     Column() {
-      Text(this.detailListItem.name)
-        .height($r('app.float.detail_list_text_height'))
-        .fontSize($r('app.float.detail_list_text_size'))
-        .fontColor($r('app.color.list_item_text'))
-        .fontWeight(CommonConstants.DETAIL_LIST_FONT_WEIGHT)
-        .align(Alignment.Start)
+      // Text(this.detailListItem.name)
+      //   .height($r('app.float.detail_list_text_height'))
+      //   .fontSize($r('app.float.detail_list_text_size'))
+      //   .fontColor($r('app.color.list_item_text'))
+      //   .fontWeight(CommonConstants.DETAIL_LIST_FONT_WEIGHT)
+      //   .align(Alignment.Start)
 
       Flex({ wrap: FlexWrap.Wrap }) {
-        ForEach(this.detailListItem.tracks, (item: DetailItemData) => {
+        ForEach(this.detailListItem.songs, (item: DetailItemData) => {
           Text(item.name)
             .width(CommonConstants.HALF_HEIGHT_PERCENT)
             .height($r('app.float.detail_list_item_height'))
@@ -177,6 +177,20 @@ struct CategoryListItem {
               this.getMusicUrl(item);
             })
           }, (item, index) => index + JSON.stringify(item))
+        Text("查看更多 >")
+          .width(CommonConstants.HALF_HEIGHT_PERCENT)
+          .height($r('app.float.detail_list_item_height'))
+          .margin(5)
+          .textAlign(TextAlign.Center)
+          .fontSize($r('app.float.Grid_item_text_size'))
+          .fontWeight(CommonConstants.TAB_ITEM_FONT_WEIGHT)
+          .align(Alignment.Center)
+          .borderRadius($r('app.float.grid_item_radius'))
+          .fontColor($r('app.color.start_window_background'))
+          .backgroundImage($r('app.color.grid_text_background'))
+          .onClick(() => {
+            // Logger.error("当前歌曲===>",);
+          })
         }
     }
     .alignItems(HorizontalAlign.Start)

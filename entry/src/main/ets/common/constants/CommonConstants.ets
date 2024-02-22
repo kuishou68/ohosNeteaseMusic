@@ -5,17 +5,30 @@ export class CommonConstants {
   /**
    * 服务器地址
    */
-  static readonly SERVER: string = 'http://192.168.3.128:3000'; // https://netease-music.zeabur.app;
+  static readonly SERVER: string = 'http://192.168.3.127:3000'; // https://netease-music.zeabur.app;
 
   /**
    * 所有榜单
+   * 必选参数 : id : 歌单 id
    */
   static readonly TOP_LIST: string = 'toplist/detail';
 
   /**
    * 榜单详情
+   * 必选参数 : id : 歌单 id
+   * 可选参数 : limit : 限制获取歌曲的数量，默认值为当前歌单的歌曲数量
+   * 可选参数 : offset : 默认值为0
+   * 注：关于offset，你可以这样理解，假设你当前的歌单有200首歌
+   *    你传入limit=50&offset=0等价于limit=50，你会得到第1-50首歌曲
+   *    你传入limit=50&offset=50，你会得到第51-100首歌曲
+   *    如果你设置limit=50&offset=100，你就会得到第101-150首歌曲
    */
   static readonly PLAY_LIST_DETAIL: string = 'playlist/detail'
+
+  /**
+   * 获取歌单所有歌曲
+   */
+  static readonly PLAY_LIST_TRACK_ALL: string = 'playlist/track/all'
 
   /**
    * 获取音乐 url

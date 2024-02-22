@@ -16,7 +16,7 @@ export struct SideListComponent {
   @Link sideList: Array<object>;
   @Link sideListIndex: number;
   @Link sideItemId: string;
-  @Link musicDetailItems: object
+  @Link musicDetailItems: Array<object>;
 
   // 建自定义组件的新实例后，在执行其build()函数之前执行
   aboutToAppear(){
@@ -28,14 +28,15 @@ export struct SideListComponent {
 
   // 获取分类歌曲列表
   getMusicItem(){
-    musicTopListViewModel.getMusicTopItem(Const.PLAY_LIST_DETAIL, this.sideItemId)
+    musicTopListViewModel.getMusicTopItem(Const.PLAY_LIST_TRACK_ALL, this.sideItemId, 15, 1)
       // @ts-ignore
       .then((data: ResponseResult) => {
         // Logger.error("data=======>", JSON.stringify(data));
         if (data.code === Const.HTTP_CODE_200) {
           // let { playlist={} } = data;
           // @ts-ignore
-          this.musicDetailItems = data.playlist;
+          // data.song
+          this.musicDetailItems = data; // data.playlist;
 
           Logger.info("musicDetailListItems-->", JSON.stringify(this.musicDetailItems))
         } else {

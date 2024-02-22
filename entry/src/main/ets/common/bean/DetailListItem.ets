@@ -17,5 +17,5 @@ export class DetailListItem {
   /**
    * Detail list item data.
    */
-  tracks: Array<DetailItemData>;
+  songs: Array<DetailItemData>; // tracks:
 }
