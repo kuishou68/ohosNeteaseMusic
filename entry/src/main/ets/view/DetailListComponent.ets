@@ -187,7 +187,7 @@ struct CategoryListItem {
           .align(Alignment.Center)
           .borderRadius($r('app.float.grid_item_radius'))
           .fontColor($r('app.color.start_window_background'))
-          .backgroundImage($r('app.color.grid_text_background'))
+          .backgroundImage($r('app.color.tab_text_activated'))
           .onClick(() => {
             // Logger.error("当前歌曲===>",);
           })
