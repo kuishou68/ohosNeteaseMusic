@@ -25,7 +25,7 @@ class MusicTopListViewModel{
       });
     });
   }
-  // 根据分类查询详情
+  // 获取歌单所有歌曲
   getMusicTopItem(path:string, id:string, limit:number, offset:number): Promise<musicTopItemData[]>{
     // Logger.error("id----->", id);
     return new Promise(async (resolve: Function, reject: Function) => {
@@ -33,6 +33,26 @@ class MusicTopListViewModel{
       // console.log("url------>", url);
       httpRequestGet(url).then((data) => {
       // Logger.error('data------->', JSON.stringify(data));
+        if (data.code === Const.HTTP_CODE_200) {
+          resolve(data);
+        } else {
+          Logger.error('getMusicTopItem failed', JSON.stringify(data));
+          reject($r('app.string.page_none_msg'));
+        }
+      }).catch((err: Error) => {
+        Logger.error('getMusicTopItem failed', JSON.stringify(err));
+        reject($r('app.string.http_error_message'));
+      });
+    });
+  }
+  // 获取歌单详情
+  playlistDetail(path:string, id:string): Promise<musicTopItemData[]>{
+    // Logger.error("id----->", id);
+    return new Promise(async (resolve: Function, reject: Function) => {
+      let url = `${Const.SERVER}/${path}?id=${id}`;
+      // console.log("url------>", url);
+      httpRequestGet(url).then((data) => {
+        // Logger.error('data------->', JSON.stringify(data));
         if (data.code === Const.HTTP_CODE_200) {
           resolve(data);
         } else {

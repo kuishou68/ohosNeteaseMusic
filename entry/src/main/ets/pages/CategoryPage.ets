@@ -8,9 +8,7 @@ import CategoryViewModel from '../model/CategoryViewModel';
 import musicTopListViewModel, { musicTopListData, ResponseResult, } from '../model/MusicTopListViewModel';
 import { CommonConstants as Const, ContentType } from '../../ets/common/constants/CommonConstants';
 import Logger from '../common/util/Logger';
-import Header from '../common/playlist/Header'
-import Player from '../common/playlist/Player'
-import Content from '../common/playlist/Content'
+
 import BreakpointSystem from '../model/MediaData'
 
 
@@ -50,9 +48,10 @@ struct CategoryPage {
           this.sideListData = [...list];
           // @ts-ignore
           this.scrollerItemId = sideListData[scrollerIndex].id;
+          Logger.error("this.scrollerItemId====>", JSON.stringify(this.scrollerItemId));
         }
-        Logger.info("this.sideListData", JSON.stringify(this.sideListData))
-        Logger.info("this.scrollerItemId", this.scrollerItemId);
+        // Logger.info("this.sideListData", JSON.stringify(this.sideListData))
+        // Logger.info("this.scrollerItemId", this.scrollerItemId);
       })
       .catch((err: string | Resource) => {
         promptAction.showToast({
@@ -148,15 +147,7 @@ struct CategoryPage {
 
         TabContent() {
           // Column().width('100%').height('100%').backgroundColor('#00CB87')
-          Stack({ alignContent: Alignment.Bottom }) {
-            Stack({ alignContent: Alignment.Top }) {
-              Header()
-              Content()
-            }
-            Player()
-          }
-          .width('100%')
-          .backgroundColor(this.currentBreakpoint === 'sm' ? '#e4ecf7' : '#f6f9fc')
+
         }.tabBar(this.TabBuilder(2, '播放'))
 
         TabContent() {

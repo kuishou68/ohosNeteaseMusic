@@ -1,5 +1,6 @@
 {
   "src": [
-    "pages/CategoryPage"
+    "pages/CategoryPage",
+    "pages/LeaderboardDetails"
   ]
 }

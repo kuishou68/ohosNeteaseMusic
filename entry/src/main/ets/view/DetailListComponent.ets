@@ -1,5 +1,6 @@
+// @ts-nocheck
 import { CommonConstants } from '../common/constants/CommonConstants';
-import { DetailListItem } from '../common/bean/DetailListItem';
+import { DetailListItem, DataModel } from '../common/bean/DetailListItem';
 import type { DetailItemData } from '../common/bean/DetailItemData';
 import CategoryViewModel from '../model/CategoryViewModel';
 import Logger from '../common/util/Logger';
@@ -10,6 +11,7 @@ import { AVPlayer } from './AVPlayer';
 import media from '@ohos.multimedia.media';
 import fs from '@ohos.file.fs';
 import common from '@ohos.app.ability.common';
+import router from '@ohos.router';
 
 /**
  * Category detail list component.
@@ -29,7 +31,8 @@ export struct DetailListComponent {
         ListItem() {
           CategoryListItem({
             detailListItem: item,
-            currentBreakpoint: this.detailListBreakpoint
+            currentBreakpoint: this.detailListBreakpoint,
+            scrollerItemId: this.sideItemId,
           })
         }
       }, (item, index) => index + JSON.stringify(item))
@@ -44,9 +47,9 @@ export struct DetailListComponent {
 @Component
 struct CategoryListItem {
   private avPlayer;
-  private count: number = 0;
   private detailListItem: DetailListItem;
   @Prop currentBreakpoint: string;
+  @Prop scrollerItemId: string;
 
   // 获取音乐URL
   getMusicUrl(item){
@@ -71,7 +74,6 @@ struct CategoryListItem {
         });
       });
   }
-
 
 
     // 注册avplayer回调函数
@@ -113,7 +115,7 @@ struct CategoryListItem {
             // } else {
             //   this.avPlayer.pause(); // 调用暂停接口暂停播放
             // }
-            this.count++;
+            // this.count++;
             break;
           case 'paused': // pause成功调用后触发该状态机上报
             console.info('AVPlayer state paused called.');
@@ -189,7 +191,12 @@ struct CategoryListItem {
           .fontColor($r('app.color.start_window_background'))
           .backgroundImage($r('app.color.tab_text_activated'))
           .onClick(() => {
-            // Logger.error("当前歌曲===>",);
+            Logger.error("跳转===>");
+            let paramsInfo: DataModel = { id: this.scrollerItemId }
+            router.pushUrl({
+              url: 'pages/LeaderboardDetails',
+              params: paramsInfo
+            });
           })
         }
     }

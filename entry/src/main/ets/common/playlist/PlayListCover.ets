@@ -1,5 +1,6 @@
 
 import { optionList, OptionListType } from '../../model/SongList'
+import { playlistDetailType } from '../bean/DetailListItem'
 
 @Component
 export default struct PlayListCover {
@@ -7,18 +8,19 @@ export default struct PlayListCover {
   @StorageProp('coverMargin') coverMargin: number = 0
   @StorageProp('currentBreakpoint') currentBreakpoint: string = 'sm'
   @StorageProp('fontSize') fontSize: number = 0
+  @Link musicDetailItems: playlistDetailType;
 
   @Builder
   CoverImage() {
     Stack({ alignContent: Alignment.BottomStart }) {
-      Image($r('app.media.pic_album'))
+      Image(this.musicDetailItems.coverImgUrl) // $r('app.media.pic_album'))
         .width(this.currentBreakpoint == 'sm' ? '120vp' : '170vp')
         .height(this.currentBreakpoint == 'sm' ? '120vp' : '170vp')
         .borderRadius(8)
         .onAreaChange((oldArea: Area, newArea: Area) => {
           this.imgHeight = newArea.height as number
         })
-      Text($r('app.string.collection_num'))
+      Text(this.musicDetailItems.playCount) // $r('app.string.collection_num'))
         .letterSpacing(1)
         .fontColor('#fff')
         .fontSize(this.fontSize - 4)
@@ -29,19 +31,19 @@ export default struct PlayListCover {
   @Builder
   CoverIntroduction() {
     Column() {
-      Text($r('app.string.list_name'))
+      Text(this.musicDetailItems.name)
         .opacity(0.9)
         .fontWeight(500)
         .fontColor('#556B89')
         .fontSize(this.fontSize + 2)
         .margin({ bottom: 10 })
 
-      Text($r('app.string.playlist_Introduction'))
+      Text(this.musicDetailItems.description)
         .opacity(0.6)
         .width('170vp')
         .fontWeight(400)
         .fontColor('#556B89')
-        .fontSize(this.fontSize - 2)
+        .fontSize($r('app.float.Grid_item_text_size'))
     }
     .width('100%')
     .height(this.currentBreakpoint === 'sm' ? this.imgHeight : 70)

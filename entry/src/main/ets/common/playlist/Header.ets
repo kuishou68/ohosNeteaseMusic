@@ -1,7 +1,9 @@
+import router from '@ohos.router';
+import { playlistDetailType } from '../bean/DetailListItem';
 
 @Component
 export default struct Header {
-  @StorageProp('fontSize') fontSize: number = 0
+  @Link musicDetailItems: playlistDetailType;
 
   build() {
     Row() {
@@ -9,8 +11,11 @@ export default struct Header {
         .width(20)
         .height(20)
         .margin({ left: 16 })
-      Text($r('app.string.play_list'))
-        .fontSize(this.fontSize + 4)
+        .onClick(() => {
+          router.back()
+        })
+      Text(this.musicDetailItems.name)
+        .fontSize($r('app.float.Grid_item_text_size'))
         .fontWeight(500)
         .fontColor('#556B89')
         .opacity(0.9)
