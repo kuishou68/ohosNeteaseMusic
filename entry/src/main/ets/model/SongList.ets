@@ -21,7 +21,8 @@ interface SongListType {
 
 interface OptionListType {
   image: Resource
-  text: Resource | string
+  text: Resource | string,
+  key: Resource | string,
 }
 
 const songList: SongListType[] = [
@@ -51,10 +52,10 @@ const songList: SongListType[] = [
   { id: 25, title: 'Notebook', singer: '小安安', label: $r('app.media.ic_SQ') }
 ]
 const optionList: OptionListType[] = [
-  { image: $r('app.media.ic_collect'), text: '999+' },
-  { image: $r('app.media.ic_download'), text: $r('app.string.download') },
-  { image: $r("app.media.icon_comments"), text: $r('app.string.comment') },
-  { image: $r('app.media.icon_share'), text: $r('app.string.share') }
+  { image: $r('app.media.ic_collect'), text: '999+', key: "playCount" },
+  { image: $r('app.media.ic_download'), text: $r('app.string.download'), key: "" },
+  { image: $r("app.media.icon_comments"), text: $r('app.string.comment'), key: "" },
+  { image: $r('app.media.icon_share'), text: $r('app.string.share'), key: "" }
 ]
 
 export { songList, optionList, OptionListType, SongListType }

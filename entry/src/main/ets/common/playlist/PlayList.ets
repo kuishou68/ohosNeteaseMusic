@@ -1,12 +1,15 @@
 
 import { songList, SongListType } from '../../model/SongList'
 import MyDataSource from '../../model/SongModule'
+import { DetailItemData } from '../bean/DetailItemData'
+import { playlistDetailType } from '../bean/DetailListItem'
 
 @Component
 export default struct PlayList {
   @Consume coverHeight: number
   @StorageProp('currentBreakpoint') currentBreakpoint: string = 'sm'
   @StorageProp('fontSize') fontSize: number = 0
+  @Link musicDetailItems: playlistDetailType;
 
   @Builder
   PlayAll() {
@@ -17,6 +20,7 @@ export default struct PlayList {
         .padding({ left: 10 })
         .fontColor('#000000')
         .fontSize(this.fontSize)
+      Text(this.musicDetailItems.tracks && this.musicDetailItems.tracks.length ? '('+String(this.musicDetailItems.tracks.length)+')' : '')
       Blank()
       Image($r('app.media.ic_order_play'))
         .width(24)
@@ -65,10 +69,15 @@ export default struct PlayList {
       this.PlayAll()
       Scroll() {
         List() {
-          LazyForEach(new MyDataSource(songList), (item: SongListType) => {
+        // new MyDataSource(songList)
+          ForEach(this.musicDetailItems.tracks, (item: DetailItemData) => {
             ListItem() {
               Column() {
-                this.SongItem(item.title, item.label, item.singer)
+                this.SongItem(item.al.name, $r('app.media.ic_SQ'),
+                  item.ar.map((e)=> {
+                    return [e.name];
+                  }).join("/")
+                )
                 Divider()
                   .strokeWidth(0.5)
                   .color('#000')

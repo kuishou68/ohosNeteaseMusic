@@ -21,7 +21,9 @@ export default struct Content {
       .backgroundColor('#e4ecf7')
 
       GridCol({ span: { sm: 12, md: 6, lg: 8 } }) {
-        PlayList()
+        PlayList({
+          musicDetailItems: $musicDetailItems
+        })
       }
       .borderRadius(40)
     }

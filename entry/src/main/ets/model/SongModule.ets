@@ -17,7 +17,7 @@ interface SongItem {
   id: number,
   title: string,
   singer: string,
-  label: Resource
+  label: string | Resource
 }
 
 export default class MyDataSource implements IDataSource {

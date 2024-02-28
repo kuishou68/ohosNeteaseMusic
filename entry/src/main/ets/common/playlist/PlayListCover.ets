@@ -35,7 +35,7 @@ export default struct PlayListCover {
         .opacity(0.9)
         .fontWeight(500)
         .fontColor('#556B89')
-        .fontSize(this.fontSize + 2)
+        .fontSize($r('app.float.Grid_item_text_size'))
         .margin({ bottom: 10 })
 
       Text(this.musicDetailItems.description)
@@ -62,7 +62,7 @@ export default struct PlayListCover {
       ForEach(optionList, (item: OptionListType) => {
         Column({ space: 4 }) {
           Image(item.image).height(30).width(30)
-          Text(item.text)
+          Text(item.key === "playCount" ? this.musicDetailItems[item.key] : item.text)
             .fontColor('#556B89')
             .fontSize(this.fontSize - 1)
         }

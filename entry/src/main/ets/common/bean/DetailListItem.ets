@@ -42,6 +42,8 @@ export class playlistDetailType {
   playCount: string;
   // 收藏数
   subscribedCount: string;
+  // Hi-Res
+  relateResType: Boolean;
 
   /**
    * Detail list item data.
